@@ -34,8 +34,7 @@ class MyDrawer extends StatelessWidget {
               ListTile(
                 onTap: () async {
                   const urlView = "https://github.com";
-                  await Share.share(
-                      "Assalomu alaykum ayov yaxshimisiz \n\n$urlView");
+                  await Share.share("not finished \n\n$urlView");
                 },
                 leading: const Icon(
                   CupertinoIcons.share,
