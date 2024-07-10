@@ -1,15 +1,19 @@
+import 'package:chat_app/core/controllers/theme_controller.dart';
 import 'package:chat_app/core/services/auth_service.dart';
 import 'package:chat_app/feature/auth/view/pages/login_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends ConsumerWidget {
   const MyDrawer({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(themeNotifier);
+    var con = ref.read(themeNotifier);
     final user = FirebaseAuth.instance.currentUser;
     return Drawer(
       child: Scaffold(
@@ -81,6 +85,16 @@ class MyDrawer extends StatelessWidget {
                   "Delete account",
                   style: TextStyle(fontSize: 24),
                 ),
+              ),
+              SwitchListTile(
+                title: Text(
+                  "Change Theme ",
+                  style: TextStyle(fontSize: 24),
+                ),
+                value: con.isChanged,
+                onChanged: (value) {
+                  con.onChanged(value);
+                },
               ),
               const Spacer(),
               ListTile(

@@ -16,10 +16,14 @@ class HomePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade300,
-        title: Text('Hi, ${user?.displayName}'),
+        title: Text(
+          'Hi, ${user?.displayName}',
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+        ),
       ),
-      body: con.buildUi(),
+      body: con.buildUi(context),
       drawer: const MyDrawer(),
     );
   }

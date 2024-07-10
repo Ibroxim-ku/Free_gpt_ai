@@ -20,7 +20,7 @@ class HomeController with ChangeNotifier {
 
   List<ChatMessage> messages = [];
 
-  Widget buildUi() {
+  Widget buildUi(BuildContext context) {
     return DashChat(
       inputOptions: InputOptions(
         trailing: [
